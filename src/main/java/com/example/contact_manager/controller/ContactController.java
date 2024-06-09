@@ -20,7 +20,8 @@ public class ContactController {
 	
 	@Autowired
 	private ContactServiceImpl service;
-
+	
+	//user inserting data
 	@PostMapping("/contact")
 	public ResponseEntity<String> contact(@RequestBody Contact contact){
 		String status =service.upsert(contact);
@@ -28,6 +29,7 @@ public class ContactController {
 		
 	}
 	
+	// user retrive all comtact
 	@GetMapping("/contacts")
 	public ResponseEntity<List<Contact>> getAllContacts(){
 		List<Contact> allContacts=service.getAllContacts();
@@ -35,12 +37,14 @@ public class ContactController {
 		    
 	}  
 	
+	//user get contact according to id
 	@GetMapping("/contact/{cid}")
 	public ResponseEntity<Contact> getContact(@PathVariable int cid){
 	Contact contact=service.getContact(cid);
 	return new ResponseEntity<>(contact,HttpStatus.OK);
 	}
 	
+	//user delete record according to id
 	@DeleteMapping("/contact/{cid}")
 	public ResponseEntity<String> deleteContact(@PathVariable int cid){
 		String deleteContact=service.deleteContact(cid);
