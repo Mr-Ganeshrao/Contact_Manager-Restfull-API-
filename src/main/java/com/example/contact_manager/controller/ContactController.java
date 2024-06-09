@@ -17,7 +17,7 @@ import com.example.contact_manager.service.ContactServiceImpl;
 
 @RestController
 public class ContactController {
-	
+	int a;
 	@Autowired
 	private ContactServiceImpl service;
 	
